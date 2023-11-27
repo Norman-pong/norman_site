@@ -1,0 +1,13 @@
+component: website
+name: norman-site
+org: zhiming
+app: iHosServer
+stage: prod
+
+inputs:
+  src:
+    src: ./build
+    index: index.html
+    error: 404.html
+    region: ap-guangzhou
+    bucketName: my-bucket
