@@ -18,7 +18,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'norman-pong', // Usually your GitHub org/user name.
+  organizationName: 'zhiming', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -52,28 +52,7 @@ const config: Config = {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
-        blog: {
-          id: 'CustomBlog01',
-          path: 'blog',
-          showReadingTime: true,
-          blogSidebarTitle: '全部推文',
-          postsPerPage: 5,
-          blogTitle: '博客推文',
-          blogSidebarCount: 'ALL',
-          feedOptions: {
-            type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-            createFeedItems: async (params) => {
-              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
-              return defaultCreateFeedItems({
-                // keep only the 10 most recent blog posts in the feed
-                blogPosts: blogPosts.filter((item, index) => index < 10),
-                ...rest,
-              });
-            },
-          },
-          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
-        } satisfies BlogOptions,
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -142,7 +121,7 @@ const config: Config = {
           position: 'left',
           label: '视觉设计',
         },
-        {to: '/blog', label: '博客推文', position: 'left'},
+        {to: '/blogs', label: '博客推文', position: 'left'},
         {
           href: 'https://github.com/norman-pong',
           label: 'GitHub',
@@ -205,7 +184,7 @@ const config: Config = {
           items: [
             {
               label: '博客',
-              to: '/blog',
+              to: '/blogs',
             },
             {
               label: 'GitHub',
@@ -221,6 +200,34 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    [
+      './src/plugins/plugin-content-blog/index.ts',
+      {
+        id: 'CustomBlog01',
+        path: 'blog',
+        showReadingTime: true,
+        blogSidebarTitle: '全部推文',
+        postsPerPage: 5,
+        blogTitle: '博客推文',
+        blogSidebarCount: 'ALL',
+        feedOptions: {
+          type: 'all',
+          copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
+          createFeedItems: async (params) => {
+            const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+            return defaultCreateFeedItems({
+              // keep only the 10 most recent blog posts in the feed
+              blogPosts: blogPosts.filter((item, index) => index < 10),
+              ...rest,
+            });
+          },
+        },
+        // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
+      } satisfies BlogOptions,
+    ],
+  ],
 };
 
 export default config;

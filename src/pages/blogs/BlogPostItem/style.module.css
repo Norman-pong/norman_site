@@ -1,0 +1,29 @@
+.post__content {
+  width: 100%;
+  max-width: 900px;
+  padding: 1.25rem;
+  border: 1px solid #d6d6d6;
+  border-radius: 12px;
+  text-align: left;
+  margin-bottom: 1rem;
+  color: var(--ifm-font-color-base);
+}
+
+.post__content:hover {
+  background-color: rgba(120, 131, 155, .05);
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+}
+
+.post__content:active {
+  background-color: rgba(120, 131, 155, .1)
+}
+
+.post__descriptionContent {
+  color: var(--ifm-color-content-secondary);
+}
+
+.post__cover {
+  min-width: 260px;
+  border-radius: var(--ifm-button-border-radius);
+}

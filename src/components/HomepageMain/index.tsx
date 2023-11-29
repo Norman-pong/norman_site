@@ -26,7 +26,7 @@ export default function HomepageMain(): JSX.Element {
           </Heading>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className="button-group" style={{padding: 12}}>
-            <Link className="button button--primary button--lg" to="/blog">
+            <Link className="button button--primary button--lg" to="/blogs">
               博客推文
             </Link>
             <Link
