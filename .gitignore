@@ -23,3 +23,6 @@ yarn-error.log*
 /blog
 /docs
 /static/Assets
+
+# serverless deploy config
+.env

@@ -1,7 +1,7 @@
 component: website
 name: norman-site
 org: zhiming
-app: iHosServer
+app: NormanSite
 stage: prod
 
 inputs:
