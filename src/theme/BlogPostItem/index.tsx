@@ -26,7 +26,6 @@ export default function BlogPostItem({
 }: Props): JSX.Element {
   const containerClassName = useContainerClassName();
 
-  debugger
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemHeader />

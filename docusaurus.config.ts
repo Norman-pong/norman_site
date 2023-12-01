@@ -8,18 +8,14 @@ import rehypeKatex from 'rehype-katex';
 const config: Config = {
   title: 'Norman Site',
   tagline: '骚气十足且不专注于软件开发的技术博客',
-  favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
+  favicon: 'img/Norman-logo.webp',
   url: 'https://zhiming.cool',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'zhiming', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  projectName: 'normanSite', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -38,7 +34,7 @@ const config: Config = {
   themes: ['@docusaurus/theme-mermaid'],
 
   customFields: {
-    websiteLogo: '/img/norman-logo.svg',
+    websiteLogo: '/img/Norman-logo.webp',
   },
   presets: [
     [
@@ -46,8 +42,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shareda/',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
@@ -61,14 +55,13 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/norman-socialcard.jpg',
     navbar: {
       hideOnScroll: true,
       title: 'Norman Site · 之明的站点',
       logo: {
         alt: 'Norman Logo',
-        src: 'img/norman-logo.svg',
+        src: 'img/Norman-logo.webp',
       },
       items: [
         {
@@ -226,6 +219,95 @@ const config: Config = {
         },
         // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
       } satisfies BlogOptions,
+    ],
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/Norman-logo.webp',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
+          /** Apple mobile config */
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: '/img/icons/icon-white-512x512.webp',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-828-1792.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1125-2436.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1170-2532.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1179-2556.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1242-2208.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1242-2688.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1284-2778.jpg',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-startup-image',
+            media:
+              '(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)',
+            href: '/img/apple-splash/apple-splash-1290-2796.jpg',
+          },
+        ],
+      },
     ],
   ],
 };

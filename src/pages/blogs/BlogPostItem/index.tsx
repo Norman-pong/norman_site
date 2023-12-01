@@ -44,16 +44,16 @@ function PostCover({cover, className}: {cover: string; className?: string}) {
 export default function BlogPostItem(
   blog: BlogPost | PropBlogPostContent,
 ): JSX.Element {
-  if (!blog.metadata) return <NotFound />;
-  const cover = blog.metadata?.frontMatter?.cover as string;
+  if (!blog.metadata) return <>''</>;
+  const windowSize = useWidthEffectLayout();
   const {title, readingTime, formattedDate, description, tags, permalink} =
     blog.metadata;
-  const windowSize = useWidthEffectLayout();
+  const cover = (blog.metadata.frontMatter?.cover as string) || '';
 
   return (
     <Link className={styles.post__content} to={`${permalink}`}>
       <div className={styles.post__header}>
-        {windowSize === 'small' && (
+        {cover && windowSize === 'small' && (
           <>
             <div className="flex-1" style={{marginBottom: '1rem'}}>
               <PostCover cover={cover} />
@@ -76,7 +76,7 @@ export default function BlogPostItem(
             </div>
           )}
         </div>
-        {windowSize !== 'small' && (
+        {cover && ['large','middle'].includes(windowSize) && (
           <>
             <div className="flex-1" style={{marginLeft: '1rem'}}>
               <PostCover cover={cover} />

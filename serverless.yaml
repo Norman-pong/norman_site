@@ -10,4 +10,4 @@ inputs:
     index: index.html
     error: 404.html
     region: ap-guangzhou
-    bucketName: my-bucket
+    bucketName: website-norman-site

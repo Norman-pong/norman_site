@@ -34,9 +34,8 @@ export default function Blogs(): JSX.Element {
     <Layout>
       <div className={clsx('flex flex__center', styles.post)}>
         <Tags tags={tagsArray} />
-        {blogs.map((i: BlogPost) => (
-          <BlogPostItem {...i} />
-        ))}
+        {blogs &&
+          blogs.map((i: BlogPost) => <BlogPostItem key={i.id} {...i} />)}
       </div>
     </Layout>
   );
