@@ -186,11 +186,15 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Norman Site. Built with Docusaurus.`,
+      copyright: `
+      <a style="color:white;" href="https://beian.miit.gov.cn/#/Integrated/index">粤ICP备2023120303号</a>
+      <p>Copyright © ${new Date().getFullYear()} Norman Site. Built with Docusaurus.</p>
+      `,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['powershell', 'bash', 'java', 'python'],
     },
   } satisfies Preset.ThemeConfig,
 
