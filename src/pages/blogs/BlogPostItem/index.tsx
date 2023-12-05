@@ -9,7 +9,7 @@ import {usePluralForm} from '@docusaurus/theme-common';
 import {translate} from '@docusaurus/Translate';
 import styles from './style.module.css';
 import TagsListInline from '@theme/TagsListInline';
-import NotFound from '@theme/Unlisted';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 function useReadingTimePlural() {
   const {selectMessage} = usePluralForm();
@@ -48,12 +48,15 @@ export default function BlogPostItem(
   const windowSize = useWidthEffectLayout();
   const {title, readingTime, formattedDate, description, tags, permalink} =
     blog.metadata;
-  const cover = (blog.metadata.frontMatter?.cover as string) || '';
+  const {siteConfig} = useDocusaurusContext();
+  const cover =
+    (blog.metadata.frontMatter?.cover as string) ||
+    (siteConfig.themeConfig.image as string);
 
   return (
     <Link className={styles.post__content} to={`${permalink}`}>
       <div className={styles.post__header}>
-        {cover && windowSize === 'small' && (
+        {windowSize === 'small' && (
           <>
             <div className="flex-1" style={{marginBottom: '1rem'}}>
               <PostCover cover={cover} />
@@ -76,7 +79,7 @@ export default function BlogPostItem(
             </div>
           )}
         </div>
-        {cover && ['large','middle'].includes(windowSize) && (
+        {['large', 'middle'].includes(windowSize) && (
           <>
             <div className="flex-1" style={{marginLeft: '1rem'}}>
               <PostCover cover={cover} />
